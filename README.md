@@ -195,6 +195,27 @@ Rails
 * Use the default `render 'partial'` syntax over `render :partial => 'partial'`.
 * Use the `:only` option to explicitly state exposed routes.
 
+Testing
+-------
+
+* Avoid `its`, `specify`, `subject`, and other DSLs. Prefer explicitness and
+  consistency.
+* Disable real HTTP requests to external services.
+* Don't prefix `it` blocks with 'should'.
+* Prefix `context` blocks names with 'given' when receiving input. Prefix with
+  'when' in most other cases.
+* Name outer `describe` blocks after the method under test. Use `self.method`
+  for class methods and `method` for instance methods. This matches the method
+  definition itself.
+* Run specs with `--format documentation`.
+* Stub requests to external services.
+* Use a `context` block for each execution path through the method.
+* Use `before` blocks to clearly define the 'setup' phase of the
+  [Four Phase Test](http://xunitpatterns.com/Four%20Phase%20Test.html).
+* Use integration tests to execute the entire app.
+* Use one expection per `it` block.
+* Use stubs and spies (not mocks) to isolate unit tests as much as possible.
+
 Credit
 ------
 
