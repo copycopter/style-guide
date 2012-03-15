@@ -67,10 +67,7 @@ Programming
 * Avoid comments.
 * Avoid global variables.
 * Avoid long parameter lists.
-* Avoid `TODO` comments.
 * Be consistent.
-* Comments longer than a word are capitalized and use punctuation. Use one space
-  before the first word of a comment and one space after periods.
 * Delete trailing whitespace.
 * Don't duplicate the functionality of a built-in library.
 * Don't over-design.
@@ -78,9 +75,11 @@ Programming
 * Don't use an empty line at the beginning or end of methods, blocks or
   conditionals.
 * Don't vertically align tokens on consecutive lines.
+* Exceptions should be exceptional. Don't suppress them or use them for control
+  flow.
+* Guesses at future functionality should not be designed into the application.
 * Keep methods small.
 * Keep the code simple.
-* Guesses at future functionality should not be designed into the application.
 * Limit lines to a maximum of 80 characters.
 * Make sure all tests pass before code is merged into a shared repository.
 * No spaces after `(`, `[`. No spaces before `]`, `)`.
@@ -104,41 +103,54 @@ Programming
 Ruby
 ----
 
+* Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
 * Avoid conditional modifiers (lines that end with conditionals).
 * Avoid hashes as optional parameters. Does the method do too much?
 * Avoid meta-programming.
-* Avoid modifying core classes ('monkey-patching').
+* Avoid monkey-patching core classes.
 * Avoid return unless required.
 * Avoid superfluous parentheses when calling methods, but keep them when you
   assign the return value.
         x = Math.sin(y)
         array.delete e
 * Avoid ternary operators (`boolean ? true : false`). Use multi-line `if`
-  instead to emphasize the branching code.
-* Predicate methods (return a boolean) end in `?`. Do not use an `is_` prefix
-  but often use `can_` or `has_` prefixes.
-* Prefer `map` over `collect`, `reduce` over `inject`, `find` over `detect`,
-  `find_all` over `select`.
+  instead to emphasize code branches.
+* Don't use `unless` with `else`.
+* Prefer `map` over `collect` and `reduce` over `inject` due to symmetry and
+  familarity with mapping and reducing in other technologies.
+* Prefer `detect` over `find` and `find_all` over `select` to avoid confusion
+  with ActiveRecord and keep `select`/`reject` symmetry.
+* Use `_` for unused block parameters.
+        hash.map { |_, v| v + 1 }
+* Use `%()` for single-line strings needing interpolation and double-quotes.
+* Use `%w()` over `['', '']` for an array of words.
 * Use `&&` and `||` for boolean expressions.
 * Use `||=` freely.
+* Use `{...}` over `do..end` for single-line blocks.
+* Use `!` suffix for dangerous methods (modifies `self`).
+* Use `?` suffix for predicate methods (return a boolean).
 * Use `CamelCase` for classes and modules, `snake_case` for variables and
   methods, `SCREAMING_SNAKE_CASE` for constants.
 * Use `def` with parentheses when there are arguments.
-* Use single quotes for strings unless variable interpolation is required.
-  Use 'here documents' for multi-line strings.
+* Use `do..end` over `{...}` for multi-line blocks.
+* Use heredocs for multi-line strings.
+* Use `/(?:first|second)/` over `/(first|second)/` when you don't need the
+  captured group.
+* Use `private` over `protected` to indicate scope.
+* Use `def self.method` over `def Class.method` or `class << self`.
+* Use `Set` over `Array` for arrays with unique elements. The lookup is faster.
+* Use single-quotes for strings unless variable interpolation is required.
+* Use `unless boolean?` instead of `if !boolean?`.
 
 Rails
 -----
 
 * Aim for skinny models and skinny controllers.
-* Avoid `protected` methods. Just use `private`.
 * Avoid Single Table Inheritance.
 * Consider extracting `private` methods to their own object.
-* Don't call a `.find` in a view or view helper.
 * Don't use SQL or SQL fragments (`where('inviter_id is not null')`) outside of
   models.
-* Limit the number of instance variables that are shared between each controller
-  and view.
+* Limit the number of instance variables shared between controller and view.
 * Order controller contents: filters, public methods, `private` methods.
 * Order model contents: constants, attributes, associations, nested attributes,
   named scopes, validations, callbacks, public methods, `private` methods.
