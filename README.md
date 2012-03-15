@@ -216,13 +216,3 @@ Testing
 * Use one expection per `it` block.
 * Use stubs and spies (not mocks) to isolate unit tests as much as possible.
 
-Credit
-------
-
-This style guide was influenced by:
-
-* [Bozhidar Batsov's Rails style guide](https://github.com/bbatsov/rails-style-guide)
-* [Bozhidar Batsov's Ruby style guide](https://github.com/bbatsov/ruby-style-guide)
-* [Christian Neukirchen's style guide](https://github.com/chneukirchen/styleguide)
-* Debate at [thoughtbot](http://thoughtbot.com)
-* [LevelUp](http://thelevelup.com)'s internal style guide
