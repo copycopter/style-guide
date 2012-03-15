@@ -64,6 +64,7 @@ Programming
 -----------
 
 * Aggressively DRY code during development.
+* Avoid abbreviations.
 * Avoid comments.
 * Avoid global variables.
 * Avoid long parameter lists.
@@ -75,6 +76,7 @@ Programming
 * Don't use an empty line at the beginning or end of methods, blocks or
   conditionals.
 * Don't vertically align tokens on consecutive lines.
+* Don't write more code than you need.
 * Exceptions should be exceptional. Don't suppress them or use them for control
   flow.
 * Guesses at future functionality should not be designed into the application.
@@ -82,6 +84,7 @@ Programming
 * Keep the code simple.
 * Limit lines to a maximum of 80 characters.
 * Make sure all tests pass before code is merged into a shared repository.
+* Name variables, methods, and classes with intention-revealing names..
 * No spaces after `(`, `[`. No spaces before `]`, `)`.
 * Order variables and methods alphabetically when possible.
 * Prefer single function exit points unless the complexity of the code is
@@ -106,6 +109,8 @@ Ruby
 * Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
 * Avoid conditional modifiers (lines that end with conditionals).
 * Avoid hashes as optional parameters. Does the method do too much?
+* Avoid including code and gems in source control that are specific to your
+  development machine or process. Examples: `.rvmrc`s, file watchers, debuggers.
 * Avoid meta-programming.
 * Avoid monkey-patching core classes.
 * Avoid return unless required.
@@ -141,22 +146,54 @@ Ruby
 * Use `Set` over `Array` for arrays with unique elements. The lookup is faster.
 * Use single-quotes for strings unless variable interpolation is required.
 * Use `unless boolean?` instead of `if !boolean?`.
+* Use [Factory Girl](https://github.com/thoughtbot/factory_girl) for setting up
+  complicated test data.
 
 Rails
 -----
 
 * Aim for skinny models and skinny controllers.
+* Avoid the `:except` option in routes.
+* Avoid `member` and `collection` routes.
 * Avoid Single Table Inheritance.
 * Consider extracting `private` methods to their own object.
+* Deploy to [Heroku](http://heroku.com).
+* Don't invoke a model's class directly from a view.
 * Don't use SQL or SQL fragments (`where('inviter_id is not null')`) outside of
   models.
+* Set `config.action_mailer.raise_delivery_errors = true` in the development
+  environment.
+* Initialize code in `config/initializers`.
+* Keep the `db/schema.rb` under version control.
+* Limit database defaults to counter caches and booleans.
 * Limit the number of instance variables shared between controller and view.
+* Name initializers for their gem name. Example: `paperclip.rb`
 * Order controller contents: filters, public methods, `private` methods.
 * Order model contents: constants, attributes, associations, nested attributes,
   named scopes, validations, callbacks, public methods, `private` methods.
 * Prefer classes to modules when designing functionality that is shared by
   multiple models.
-* Prefer gems to plugins.
+* Prefer gems over plugins.
+* Prefer presenters (Ruby objects responsible for presentation) over view
+  helpers.
+* Put all copy text in models, views, controllers, and mailers in
+  `config/locales`.
+* Set `config.action_mailer.delivery_method = :test` in the test environment.
+* Use `_path` over `_url` for named routes everywhere except mailer views.
+* Use `def self.method` over the `named_scope :method` DSL.
+* Use [Foreman](https://github.com/ddollar/foreman) to run Rails apps in
+  development mode.
+* Use `I18n.t 'dot.separated.key'` over
+  `I18n.t :key, :scope => [:dot, :separated]`.
+* Use [Haml](http://haml-lang.com) over ERb.
+* Use `has_and_belongs_to_many` if all you need is a join table. Start simple.
+* Use namespaced locale lookup in the views by prefixing a period: `t '.title'`.
+* Use nested routes to express `belongs_to` relationships between resources.
+* Use one `ActionMailer` for the app. Name it `Mailer`.
+* Use [single recipient SMTP](https://gist.github.com/2042496) in the staging
+  environment.
+* Use the default `render 'partial'` syntax over `render :partial => 'partial'`.
+* Use the `:only` option to explicitly state exposed routes.
 
 Credit
 ------
