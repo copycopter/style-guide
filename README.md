@@ -213,6 +213,6 @@ Testing
 * Use `before` blocks to clearly define the 'setup' phase of the
   [Four Phase Test](http://xunitpatterns.com/Four%20Phase%20Test.html).
 * Use integration tests to execute the entire app.
-* Use one expection per `it` block.
+* Use one expectation per `it` block.
 * Use stubs and spies (not mocks) to isolate unit tests as much as possible.
 
